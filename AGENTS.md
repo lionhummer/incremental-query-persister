@@ -1,0 +1,1 @@
+Read README.md and docs/design.md before changing APIs. Preserve acknowledged-write bookkeeping, generation fencing, explicit mutation rejection, eviction semantics and strict byte limits. Run npm run check, formatting, examples and benchmark. No private source project names, credentials or generated output in Git. Benchmarks must describe workloads and limitations.

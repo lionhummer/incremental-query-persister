@@ -1,0 +1,51 @@
+{
+  "name": "@lionhummer/incremental-query-persister",
+  "version": "0.1.0",
+  "description": "Incremental query persistence with bounded snapshots, backpressure and session fencing",
+  "type": "module",
+  "license": "MIT OR Apache-2.0",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "files": [
+    "dist",
+    "docs",
+    "README.md",
+    "LICENSE-MIT",
+    "LICENSE-APACHE",
+    "CHANGELOG.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./sqlite": {
+      "types": "./dist/sqlite.d.ts",
+      "import": "./dist/sqlite.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.check.json",
+    "test": "node --import tsx --test test/*.test.ts",
+    "example": "node --import tsx examples/basic.ts",
+    "bench": "node --import tsx bench/serialization.ts",
+    "format": "prettier --write src test examples bench README.md docs",
+    "format:check": "prettier --check src test examples bench README.md docs",
+    "check": "npm run typecheck && npm test && npm run build",
+    "prepublishOnly": "npm run check && npm run format:check && npm run bench"
+  },
+  "devDependencies": {
+    "@tanstack/query-core": "^5.104.1",
+    "@tanstack/query-persist-client-core": "^5.104.1",
+    "@types/node": "^22.19.0",
+    "prettier": "^3.6.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lionhummer/incremental-query-persister.git"
+  }
+}
